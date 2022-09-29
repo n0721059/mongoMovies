@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+
+    <body>
+
+    <h1>CinemApp - Cinema Posters Downloader</h1>
+    <h2>Showing Results For...</h2>
+
+    <form action="/search/download" method="POST">
+    <div>
+    {% for movie_name, condition in content %}
+        {% if condition %}
+        <p>{{movie_name}} ID:{{movie_name.movieID}}
+        <input type="checkbox" id={{movie_name.movieID}} name="movieID" value=tt{{movie_name.movieID}}>
+        </p>
+        <image src='/posters/tt{{movie_name.movieID}}'>
+        {% endif %}
+    {% endfor %}
+        <div class="control">
+                <button class="button is-block is-info is-large is-fullwidth" >Download</button>
+    </form>
+        </div>
+    </div>
+    </body>
+{% endblock %}
